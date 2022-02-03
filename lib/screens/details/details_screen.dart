@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import'package:oriina/constants.dart';
 import 'package:oriina/models/product.dart';
+import 'package:oriina/screens/details/compontes/body.dart';
 
 class DetailsScreen extends StatelessWidget {
   final Product product;
@@ -15,6 +16,7 @@ class DetailsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: product.color,
       appBar: buildAppBar(context),
+      body: Body(product: product,),
     );
   }
 
