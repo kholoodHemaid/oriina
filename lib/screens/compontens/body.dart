@@ -3,6 +3,7 @@ import 'package:oriina/constants.dart';
 import 'package:oriina/models/product.dart';
 import 'package:oriina/screens/compontens/Categories.dart';
 import 'package:oriina/screens/compontens/Item_Card.dart';
+import 'package:oriina/screens/details/details_screen.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -31,16 +32,23 @@ class Body extends StatelessWidget {
                 crossAxisCount: 2,
                 childAspectRatio: 0.75,
                 mainAxisSpacing: kDefaultPaddin,
-               crossAxisSpacing: kDefaultPaddin
+                crossAxisSpacing: kDefaultPaddin),
+            itemBuilder: (context, index) => ItemCard(
+              product: products[index],
+              press: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsScreen(
+                    product: products[index],
+                  ),
+                ),
+              ),
             ),
-            itemBuilder: (context, index) => ItemCard(product: products[index],),
           ),
         ))
       ],
     );
   }
 }
-
-
 
 // we need statfull widegts to categories
