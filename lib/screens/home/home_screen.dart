@@ -9,7 +9,6 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(backgroundColor: Colors.white,
       elevation: 0,
       leading: IconButton(icon:SvgPicture.asset("assets/icons/back.svg") ,onPressed: (){},)
-
         ,),
     );
   }
