@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:oriina/constants.dart';
 import 'package:oriina/models/product.dart';
+import 'package:oriina/screens/details/compontes/Color_anad_size.dart';
+import 'package:oriina/screens/details/compontes/cart_counter.dart';
+import 'package:oriina/screens/details/compontes/description.dart';
 import 'package:oriina/screens/details/compontes/product_title_with_image.dart';
 
 class Body extends StatelessWidget {
@@ -35,49 +38,10 @@ class Body extends StatelessWidget {
                   ),
                   child: Column(
                     children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  "Color",
-                                  //style: TextStyle(fontSize: 20),
-                                ),
-                                Row(
-                                  children: [
-                                    ColorDot(
-                                      color: Color(0xFF356C95),
-                                      isSelected: true,
-                                    ),
-                                    ColorDot(
-                                      color: Color(0xFF358C078),
-                                    ),
-                                    ColorDot(
-                                      color: Color(0xFFA29B9B),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                          RichText(
-                            text: TextSpan(
-                              style: TextStyle(color: kTextColor),
-                              children: [
-                                TextSpan(
-                                  text: "Size\n",
-                                ),
-                                TextSpan(
-                                  text: "${product.size} cm",
-                                  style: Theme.of(context).textTheme.headline5!.copyWith(fontWeight: FontWeight.bold)
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                      ColorAndSize(product: product),
+                      SizedBox(height: kDefaultPaddin / 2),
+                      Description(product: product),
+                      CartCounter(),
                     ],
                   ),
                 ),
@@ -91,34 +55,3 @@ class Body extends StatelessWidget {
   }
 }
 
-class ColorDot extends StatelessWidget {
-  final Color color;
-  final bool isSelected;
-
-  const ColorDot({
-    Key? key,
-    required this.color,
-    //by default isSelected false
-    this.isSelected = false,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin:
-          EdgeInsets.only(top: kDefaultPaddin / 4, right: kDefaultPaddin / 2),
-      padding: EdgeInsets.all(2.5),
-      height: 24,
-      width: 24,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(
-          color: isSelected ? color : Colors.transparent,
-        ),
-      ),
-      child: DecoratedBox(
-        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-      ),
-    );
-  }
-}
