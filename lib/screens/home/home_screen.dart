@@ -8,7 +8,8 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.white,
       elevation: 0,
-      leading: IconButton(icon:SvgPicture.asset(assetName) ,),),
+      leading: IconButton(icon:SvgPicture.asset("assets/icons/back.svg") ,onPressed: (){},)
+        ,),
     );
   }
 }
