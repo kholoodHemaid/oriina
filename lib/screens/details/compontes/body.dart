@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:oriina/constants.dart';
 import 'package:oriina/models/product.dart';
 import 'package:oriina/screens/details/compontes/Color_anad_size.dart';
-import 'package:oriina/screens/details/compontes/cart_counter.dart';
+import 'package:oriina/screens/details/compontes/add_to_cart.dart';
+
+import 'package:oriina/screens/details/compontes/counter_with_favbtn.dart';
 import 'package:oriina/screens/details/compontes/description.dart';
 import 'package:oriina/screens/details/compontes/product_title_with_image.dart';
 
@@ -38,10 +41,14 @@ class Body extends StatelessWidget {
                   ),
                   child: Column(
                     children: <Widget>[
+                      SizedBox(height: kDefaultPaddin/2,),
                       ColorAndSize(product: product),
                       SizedBox(height: kDefaultPaddin / 2),
                       Description(product: product),
-                      CartCounter(),
+                      SizedBox(height: kDefaultPaddin/2,),
+                      CounterWithFavBtn(),
+                      SizedBox(height: kDefaultPaddin/2,),
+                      AddToCart(product: product)
                     ],
                   ),
                 ),
@@ -54,4 +61,8 @@ class Body extends StatelessWidget {
     );
   }
 }
+
+
+
+
 

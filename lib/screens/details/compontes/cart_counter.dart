@@ -17,17 +17,18 @@ class _CartCounterState extends State<CartCounter> {
       children: <Widget>[
         buildOutLineButton(iconData: (Icons.remove),
             press: () {
-               setState(() {
-                 numOfIteams--;
-               });
+          if(numOfIteams>1){
+               setState(() {numOfIteams--;});}
             }),
 
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin / 2),
-          child: Text("01",
-            // if our item is less  then 10 then  it shows 01 02 like that
+          child: Text(
 
-            // numOfItems.toString().padLeft(2, "0"),
+
+            // if our item is less  then 10 then  it shows 01 02 like that
+            numOfIteams.toString().padLeft(2, "0"),
+
             style: Theme
                 .of(context)
                 .textTheme
@@ -35,7 +36,11 @@ class _CartCounterState extends State<CartCounter> {
           ),
         ),
         buildOutLineButton(iconData: Icons.add,
-            press: (){}),
+            press: (){
+          setState(() {
+            numOfIteams++;
+          });
+            }),
       ],
     );
   }
@@ -57,7 +62,7 @@ class _CartCounterState extends State<CartCounter> {
           // side: BorderSide(width: 2, color: Colors.green),
         ),
 
-        onPressed: () {}, child: Icon(iconData),),
+        onPressed: press, child: Icon(iconData),),
     );
   }
 }
